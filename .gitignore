@@ -1,2 +1,4 @@
 /html
 /latex
+.idea/
+cmake-build-debug/

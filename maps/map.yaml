@@ -1,8 +1,6 @@
-image: map_demo.png
+image: map_maze.png
 resolution: 1
-origin: [0.0, 0.0, 0.0]
-occupied_thresh: 0.1
-free_thresh: 0.05
+origin: [0.0, 0.0, 0.0] # x, y, theta，地图(0, 0)点在世界坐标系的位置
+occupied_thresh: 0.1 # 高于这个值认为是occupied
+free_thresh: 0.05 # 低于这个值认为是free
 negate: 0
-
-
