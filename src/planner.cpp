@@ -157,7 +157,7 @@ void Planner::plan() {
     int width = grid->info.width;
     int height = grid->info.height;
     int depth = Constants::headings;
-    int length = width * height * depth;
+    int length = width * height * depth; // 50 * 20 * 72 = 72000
     // define list pointers and initialize lists
     Node3D* nodes3D = new Node3D[length]();
     Node2D* nodes2D = new Node2D[width * height]();
