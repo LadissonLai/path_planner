@@ -318,7 +318,7 @@ float aStar(Node2D& start,
           iSucc = nSucc->setIdx(width);
 
           // ensure successor is on grid ROW MAJOR
-          // ensure successor is not blocked by obstacle
+          // ensure successor is not blocked by obstacle isTraversable做碰撞检测的
           // ensure successor is not on closed list
           if (nSucc->isOnGrid(width, height) &&  configurationSpace.isTraversable(nSucc) && !nodes2D[iSucc].isClosed()) {
             // calculate new G value
@@ -331,9 +331,9 @@ float aStar(Node2D& start,
               nSucc->updateH(goal);
               // put successor on open list
               nSucc->open();
-              nodes2D[iSucc] = *nSucc;
+              nodes2D[iSucc] = *nSucc; // 这里调用了operator=函数，属于默认浅拷贝，因此不会造成这种情况。
               O.push(&nodes2D[iSucc]);
-              delete nSucc;
+              delete nSucc; //我就不懂了，这里delete释放了邻居节点，后面怎么访问呢？
             } else { delete nSucc; }
           } else { delete nSucc; }
         }
@@ -446,10 +446,10 @@ void updateH(Node3D& start, const Node3D& goal, Node2D* nodes2D, float* dubinsLo
   }
 
   if (Constants::twoD) {
-    // offset for same node in cell
+    // offset for same node in cell。
     twoDoffset = sqrt(((start.getX() - (long)start.getX()) - (goal.getX() - (long)goal.getX())) * ((start.getX() - (long)start.getX()) - (goal.getX() - (long)goal.getX())) +
                       ((start.getY() - (long)start.getY()) - (goal.getY() - (long)goal.getY())) * ((start.getY() - (long)start.getY()) - (goal.getY() - (long)goal.getY())));
-    twoDCost = nodes2D[(int)start.getY() * width + (int)start.getX()].getG() - twoDoffset;
+    twoDCost = nodes2D[(int)start.getY() * width + (int)start.getX()].getG() - twoDoffset; // 两者相加为实际距离，而非栅格距离。
 
   }
 
