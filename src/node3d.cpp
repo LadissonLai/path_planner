@@ -52,7 +52,7 @@ Node3D* Node3D::createSuccessor(const int i) {
 
   // calculate successor positions forward
   if (i < 3) {
-    xSucc = x + dx[i] * cos(t) - dy[i] * sin(t);
+    xSucc = x + dx[i] * cos(t) - dy[i] * sin(t); // 这里的dx，dy，dt是按照自车的坐标系，设置的偏移值。
     ySucc = y + dx[i] * sin(t) + dy[i] * cos(t);
     tSucc = Helper::normalizeHeadingRad(t + dt[i]);
   }

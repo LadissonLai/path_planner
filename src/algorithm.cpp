@@ -55,7 +55,7 @@ Node3D* Algorithm::hybridAStar(Node3D& start,
           > priorityQueue;
   priorityQueue O;
 
-  // update h value
+  // update h value， update 2d occ heuristic cost
   updateH(start, goal, nodes2D, dubinsLookup, width, height, configurationSpace, visualization);
   // mark start as open
   start.open();
