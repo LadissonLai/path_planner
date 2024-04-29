@@ -214,15 +214,13 @@ void Planner::plan() {
     // _________________________________
     // PUBLISH THE RESULTS OF THE SEARCH
     path.publishPath();
-    path.publishPathNodes();
-    path.publishPathVehicles();
-    smoothedPath.publishPath();
-    smoothedPath.publishPathNodes();
-    smoothedPath.publishPathVehicles();
-    visualization.publishNode3DCosts(nodes3D, width, height, depth);
-    visualization.publishNode2DCosts(nodes2D, width, height);
-
-
+    path.publishPathNodes(); // vis path
+    path.publishPathVehicles(); // vis pathVehicle
+    smoothedPath.publishPath(); 
+    smoothedPath.publishPathNodes(); // vis sPath
+    smoothedPath.publishPathVehicles(); // vis sPathVehicle
+    visualization.publishNode3DCosts(nodes3D, width, height, depth); // vis visualizeNodes3DCosts, 没有什么用
+    visualization.publishNode2DCosts(nodes2D, width, height); // vis visualizeNodes2DCosts，没有什么用
 
     delete [] nodes3D;
     delete [] nodes2D;
